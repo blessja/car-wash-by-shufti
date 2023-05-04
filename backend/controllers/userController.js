@@ -64,30 +64,30 @@ const createUser = async (req, res) => {
 
 // Login a user
 
-const loginUser = async (req, res) => { 
-  const { email, password } = req.body;
-  try {
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ success: false, error: "Invalid credentials" });
-    }
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ success: false, error: "Invalid credentials" });
-    }
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
-    res.status(200).json({ success: true, token: token });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-};
+// const loginUser = async (req, res) => { 
+//   const { email, password } = req.body;
+//   try {
+//     const user = await User.findOne({ email });
+//     if (!user) {
+//       return res.status(400).json({ success: false, error: "Invalid credentials" });
+//     }
+//     const isMatch = await bcrypt.compare(password, user.password);
+//     if (!isMatch) {
+//       return res.status(400).json({ success: false, error: "Invalid credentials" });
+//     }
+//     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+//       expiresIn: "1h",
+//     });
+//     res.status(200).json({ success: true, token: token });
+//   } catch (error) {
+//     res.status(500).json({ success: false, error: error.message });
+//   }
+// };
 
 module.exports = {
   getAllUsers,
   createUser,
-  loginUser,
+  // loginUser,
  
 };
 

@@ -41,7 +41,7 @@ app.use('/api/carwashes/:id', carwashRouter);
 
 
 app.use('/api/carwashes/:id/users', carwashRouter)
-app.use('/api/carwashes/:id/users/login', usersRouter)
+app.use('/api/carwashes/:id/users/login', carwashRouter);
 app.use('/api/carwashes/:id/washHistory', washHistory);
 
 

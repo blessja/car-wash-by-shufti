@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Carwash = require('../controllers/carwashController');
+const User = require('../controllers/userController');
 const {loginUser} = require("../controllers/userController");
 
 
@@ -36,10 +37,10 @@ router.post('/:id/users', async (req, res) => {
     Carwash.createUser(req, res);
 });
 
-router.post("/carwashes/:carwashId/users/login", (req, res) => {
+router.post("/carwashes/:carwashId/users/login",  (req, res) => {
     User.loginUser(req, res);
   });
-  router.post('/login', loginUser)
+
   
 
 
